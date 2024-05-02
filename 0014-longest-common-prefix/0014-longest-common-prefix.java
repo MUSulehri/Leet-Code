@@ -1,17 +1,18 @@
 class Solution {
+    public Boolean recursionCheck (String[] strs, int curr, int index, char c) {
+        if (strs.length <= curr) return true;
+        if (strs[curr].length() <= index) return false;
+        if (strs[curr].charAt(index) != c) return false;
+        return recursionCheck (strs, curr + 1, index, c);
+    }
     public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) {
-            return "";
+        String common = "";
+        for (int i = 0; i < strs[0].length(); i++) {
+            if (recursionCheck (strs, 0, i, strs[0].charAt(i)))
+                common += strs[0].charAt(i);
+            else
+                break;
         }
-        String prefix = strs[0];
-        for (int i = 1; i < strs.length; i++) {
-            while (strs[i].indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty()) {
-                    return "";
-                }
-            }
-        }   
-        return prefix;
+        return common;
     }
 }
