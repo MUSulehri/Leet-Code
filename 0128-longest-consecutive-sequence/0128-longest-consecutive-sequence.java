@@ -11,7 +11,7 @@ class Solution {
         
         for (int num : nums) set.add(num);
         
-        for (int num : nums) {
+        for (int num : set) {
             if (!set.contains(num - 1)) {
                 int incremented = num + 1;
                 int counter = 1;
