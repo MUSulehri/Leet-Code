@@ -9,7 +9,7 @@ class Solution {
         HashSet<Integer> set = new HashSet<>();
         int finalCount = 0;
         
-        Arrays.stream(nums).forEach(num -> set.add(num));
+        for (int num : nums) set.add(num);
         
         for (int num : nums) {
             if (!set.contains(num - 1)) {
